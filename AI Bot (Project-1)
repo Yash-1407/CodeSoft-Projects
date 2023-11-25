@@ -1,0 +1,76 @@
+
+def chatbot_Thoth(user_input):
+    user_input_lower = user_input.lower()
+
+    if "hi" in user_input_lower:
+        return "Hello! How may I assist you ?"
+        
+    if "hello" in user_input_lower:
+        return "Hello! How may I assist you ?"
+
+    elif "how are you" in user_input_lower:
+        return "I'm doing well, thank you! How about you?"
+    elif "whats your name" in user_input_lower:
+        return "I'm Thoth  a chatbot created by lucifer!"
+    elif any(keyword in user_input_lower for keyword in ["tell me something about you"]):
+        return "My name is a tribute to a egyptian god Thoth who was the god of wisdom and knowledge"
+
+    elif any(keyword in user_input_lower for keyword in ["bye"]):
+        return "Farewell! Have a good day n see ya."
+
+    elif "weather" in user_input_lower:
+        return "Today's weather is sunny, You can definetly go to drive or beach"
+    elif "Thanks" in user_input_lower:
+        return "I was glad to asist you"
+
+    elif "nothing" in user_input_lower:
+        return "Talk to me I'm hear to listen to you"
+    
+    elif any(keyword in user_input_lower for keyword in ["how can you assist me", "what can you do"]):
+        return "I can chat with you and answer your questions. I'm Perfect in maths."
+    
+    elif any(keyword in user_input_lower for keyword in ["recommend me something"]):
+        return "Go to a walk n refresh yourself, talk with me , have a movie night"
+
+    elif "technology" in user_input_lower:
+        return "The technology in today's world is growing rapidly soon I will be more helpful to you than Im now ;)"
+
+    elif "maths" in user_input_lower:
+        return "Yes, I can do basic maths such as Addition, Subtraction, Multiplication, division, etc."
+
+    elif any(operation in user_input_lower for operation in ["add", "subtract", "multiply", "divide", "reminder"]):
+        try:
+            a = float(input("Enter 1st number: "))
+            b = float(input("Enter 2nd number: "))
+            
+            if "add" in user_input_lower:
+                return f"The result is: {a + b}"
+            elif "subtract" in user_input_lower:
+                return f"The result is: {a - b}"
+            elif "multiply" in user_input_lower:
+                return f"The result is: {a * b}"
+            elif "divide" in user_input_lower:
+                if b != 0:
+                    return f"The result is: {a / b}"
+                else:
+                    return "Cannot divide by zero. Please provide a non-zero divisor."
+            elif "reminder" in user_input_lower:
+                if b != 0:
+                    return f"The result is: {a % b}"
+                else:
+                    return "Cannot find the remainder when dividing by zero. Please provide a non-zero divisor."
+            else:
+                return "Invalid operation. Please check your command."
+        except ValueError:
+            return "Invalid input. Please provide numeric values for the operation."
+
+    else:
+        return "I'm sorry, I couldn't understand that. Can you please tell me in an understandable way?"
+
+while True:
+    user_query = input("You: ")
+    if user_query.lower() == 'exit':
+        print("Chatbot: Always there for you to assist you!")
+        break
+    response = chatbot_Thoth(user_query)
+    print("Chatbot:", response)

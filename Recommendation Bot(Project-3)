@@ -1,0 +1,40 @@
+movies_data = [
+    {'Title': 'The Conjuring', 'Genre': 'Horror', 'Rating': 4.5},
+    {'Title': 'Pirates of the Cariebian', 'Genre': 'Fantasy', 'Rating': 3.8},
+    {'Title': 'Monster', 'Genre': 'Crime', 'Rating': 4.2},
+    {'Title': 'The wolf of wallstreet', 'Genre': 'Drama', 'Rating': 4.5},
+    {'Title': 'Golmal', 'Genre': 'Comedy', 'Rating': 4.0},
+    {'Title': 'john wick', 'Genre': 'Action', 'Rating': 4.1},
+    {'Title': 'Anabelle comes home', 'Genre': 'Horror', 'Rating': 3.7},
+    {'Title': 'Star wars', 'Genre': 'Fantasy', 'Rating': 4.3},
+    {'Title': 'American Pschyco', 'Genre': 'Crime', 'Rating': 4.7},
+    {'Title': 'I want to eat your Pancreas', 'Genre': 'Drama', 'Rating': 4.8},
+    {'Title': 'American Pie', 'Genre': 'Comedy', 'Rating': 3.0},
+    {'Title': 'Get out', 'Genre': 'Drama', 'Rating': 4.7},
+    {'Title': 'Jumanji', 'Genre': 'Action', 'Rating': 3.9},
+    {'Title': 'Captain America:Winter Solider', 'Genre': 'Action', 'Rating': 3.6},
+    {'Title': 'American pie', 'Genre': 'Comedy', 'Rating': 3.0},
+]
+
+def recommend_movies_by_genre(user_genre):
+    matching_movies = [movie for movie in movies_data if user_genre.lower() in movie['Genre'].lower()]
+
+    if not matching_movies:
+        return "No movies found for the specified genre."
+
+    sorted_movies = sorted(matching_movies, key=lambda x: x['Rating'], reverse=True)
+
+    recommended_movies = [(movie['Title'], movie['Rating']) for movie in sorted_movies]
+
+    return recommended_movies
+
+user_input_genre = input("Enter the genre of movie you're interested in: ")
+
+recommendations = recommend_movies_by_genre(user_input_genre)
+
+if isinstance(recommendations, str):
+    print(recommendations)
+else:
+    print(f"Recommended movies in {user_input_genre} genre:")
+    for title, rating in recommendations:
+        print(f"{title} - Rating: {rating}")
